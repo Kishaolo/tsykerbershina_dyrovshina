@@ -62,6 +62,7 @@ class UserEditForm(forms.ModelForm):
             raise forms.ValidationError(' Email already in use.')
         return data 
 
+
 class ProfileEditForm(forms.ModelForm): 
     """
     Позволяет редачить данные которые сохранены в моделе Profile. Юзеры смогут редачить дату своего рождения и закачивать изображения на сайт в качестве фотоснимка профиля
