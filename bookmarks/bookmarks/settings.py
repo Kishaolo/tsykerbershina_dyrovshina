@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+        #pomestili vnachalo svoe app account chtobi site auth po nashim pravilam
     'account.apps.AccountConfig', # regaem app in django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,3 +122,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'dashboard' # na kakoi adress nado perenapravlat esli vxod yspeshen
+LOGIN_URL = 'login' # kuda nado napravlat esli nyshno zaregat vxod 
+LOGOUT_URL = 'logout' # kuda nado perenapravit chtobi zaregistrirovat vixod
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Данные настройки позволят Джанго управлять закачкой файлов на сайт и раздачей медиафайлов
+MEDIA_URL = 'media/' # base url who for use mediafiles and upload userami on site
+MEDIA_ROOT = BASE_DIR / 'media' # local path where they location
+
+
+#sdes ostovlaem standart ModelBackend, kotorii isp authentication po username i password i vstablaem nash sobstvennii backend authentication s primeneniem email EmailAuthBackend 
+AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend', 
+        'account.authentication.EmailAuthBackend', 
+        ]
